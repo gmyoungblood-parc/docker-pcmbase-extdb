@@ -11,4 +11,5 @@ apt-get install -y libssl
 apt-get install -y libssl-dev
 apt-get install -y gunicorn
 apt-get install -y sendmail
+#apt-get install -y postgresql-9.3 postgresql-contrib-9.3 
 
