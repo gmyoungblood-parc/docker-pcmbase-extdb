@@ -22,7 +22,7 @@ RUN apt-get install -y python-pip
 RUN apt-get install -y libxml2-dev libxslt-dev
 RUN apt-get install -y python-dev
 RUN apt-get install -y lib32z1-dev
-RUN apt-get install -y libssl
+#RUN apt-get install -y libssl
 RUN apt-get install -y libssl-dev
 RUN apt-get install -y gunicorn
 RUN apt-get install -y sendmail
