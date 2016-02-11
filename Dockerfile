@@ -66,6 +66,10 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 RUN gpg -a --export E084DAB9 | sudo apt-key add -
 RUN apt-get update
 RUN apt-get install -y r-base
+RUN apt-get install -y r-base-dev
+RUN apt-get install -y r-cran-tkrplot
+RUN apt-get install -y libopenblas-base 
+RUN apt-get install -y 
 
 # Python Dependencies
 
@@ -80,7 +84,7 @@ RUN pip install billiard==3.3.0.19
 RUN pip install Bottleneck==1.0.0
 RUN pip install celery==3.1.17
 RUN pip install certifi==14.5.14
-RUN pip install distribute==0.6.31
+#RUN pip install distribute==0.6.31
 RUN pip install dj-database-url==0.3.0
 RUN pip install dj-static==0.0.6
 RUN pip install Django==1.7.5
