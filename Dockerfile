@@ -135,4 +135,4 @@ RUN service postgresql start
 ADD setup-database.sh /docker-entrypoint-initdb.d/
 RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
 
-ENTRYPOINT ["/usr/local/"]
+#ENTRYPOINT ["/usr/local/"]
