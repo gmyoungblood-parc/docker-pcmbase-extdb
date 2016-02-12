@@ -2,11 +2,7 @@ FROM ubuntu:14.04
 
 MAINTAINER Michael Youngblood <Michael.Youngblood@parc.com>
 
-ENV DB_NAME pcm
-ENV DB_USER pcm
-ENV DB_PASS pcm2016
-ENV DATABASE_URL postgres://pcm:pcm2016@127.0.0.1:5432/pcm
-ENV PYTHONBUFFERED true
+ENV DATABASE_URL postgres://postgres:postgres1234@127.0.0.1:5432/pcm
 ENV PORT 8000
 ENV LOCAL_POSTGRES true
 
