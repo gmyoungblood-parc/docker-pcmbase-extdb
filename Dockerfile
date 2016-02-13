@@ -50,9 +50,9 @@ RUN gem install foreman
 
 # Virtual framebuffer for R
 #
-#RUN apt-get install -y xvfb 
-#RUN apt-get install -y xauth 
-#RUN apt-get install -y xfonts-base
+RUN apt-get install -y xvfb 
+RUN apt-get install -y xauth 
+RUN apt-get install -y xfonts-base
 
 # R system
 # From https://www.digitalocean.com/community/tutorials/how-to-set-up-r-on-ubuntu-14-04
@@ -66,9 +66,10 @@ RUN apt-get install -y r-base-dev
 RUN apt-get install -y r-cran-tkrplot
 RUN apt-get install -y libopenblas-base 
 RUN apt-get install -y r-cran-tseries
-RUN sudo su - -c "R -e \"install.packages('lomb', repos = 'http://cran.R-project.org')\""
-RUN sudo su - -c "R -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\""
-RUN sudo su - -c "R -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('lomb', repos = 'http://cran.R-project.org')\""
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\""
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')\""
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
 
 # Python Dependencies
 
