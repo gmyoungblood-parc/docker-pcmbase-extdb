@@ -8,7 +8,7 @@ ENV LOCAL_POSTGRES true
 
 EXPOSE 5432
 EXPOSE 8000
-EXPOSE 8888-8900
+EXPOSE 8888-8890
 
 RUN apt-get -y update
 RUN apt-get -y upgrade
