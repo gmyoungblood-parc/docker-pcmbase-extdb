@@ -31,7 +31,14 @@ pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
 #
 # 'nonlinearTseries'
 #
+# 'lomb', 'tseries', 'TSA'
+#
 # install.packages("RHRV", repos="http://R-Forge.R-project.org")
+
+sudo su - -c "R -e \"install.packages('lamb', repos = 'http://cran.R-project.org')\""
+sudo su - -c "R -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\""
+sudo su - -c "R -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
+
 
 # Get the panicpal server code
 # 
