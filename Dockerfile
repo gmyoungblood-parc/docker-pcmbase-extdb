@@ -66,12 +66,12 @@ RUN apt-get install -y r-base-dev
 RUN apt-get install -y r-cran-tkrplot
 RUN apt-get install -y libopenblas-base 
 RUN apt-get install -y r-cran-tseries
-RUN apt-get install -y libpng-dev
-RUN apt-get install -y zlib1g-dev
+#RUN apt-get install -y libpng-dev
+#RUN apt-get install -y zlib1g-dev
 RUN xvfb-run R --no-save -e "install.packages('lomb', repos = 'http://cran.R-project.org')"
 RUN xvfb-run R --no-save -e "install.packages('TSA', repos = 'http://cran.R-project.org')"
-RUN xvfb-run R --no-save -e "install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')"
-RUN xvfb-run R --no-save -e "install.packages('RHRV', repos = 'http://R-Forge.R-project.org')"
+#RUN xvfb-run R --no-save -e "install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')"
+#RUN xvfb-run R --no-save -e "install.packages('RHRV', repos = 'http://R-Forge.R-project.org')"
 
 # Python Dependencies
 
