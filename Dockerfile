@@ -66,7 +66,7 @@ RUN apt-get install -y r-base-dev
 RUN apt-get install -y r-cran-tkrplot
 RUN apt-get install -y libopenblas-base 
 RUN apt-get install -y r-cran-tseries
-RUN sudo su - -c "R -e \"install.packages('lomb', repos = 'http://R-Forge.R-project.org')\""
+RUN sudo su - -c "R -e \"install.packages('lomb', repos = 'http://cran.R-project.org')\""
 RUN sudo su - -c "R -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\""
 RUN sudo su - -c "R -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
 
