@@ -18,7 +18,6 @@ RUN apt-get install -y python-pip
 RUN apt-get install -y libxml2-dev libxslt-dev
 RUN apt-get install -y python-dev
 RUN apt-get install -y lib32z1-dev
-#RUN apt-get install -y libssl
 RUN apt-get install -y libssl-dev
 RUN apt-get install -y gunicorn
 RUN apt-get install -y sendmail
@@ -50,9 +49,9 @@ RUN gem install foreman
 
 # Virtual framebuffer for R
 #
-RUN apt-get install -y xvfb 
-RUN apt-get install -y xauth 
-RUN apt-get install -y xfonts-base
+#RUN apt-get install -y xvfb 
+#RUN apt-get install -y xauth 
+#RUN apt-get install -y xfonts-base
 
 # R system
 # From https://www.digitalocean.com/community/tutorials/how-to-set-up-r-on-ubuntu-14-04
@@ -66,19 +65,16 @@ RUN apt-get install -y r-base-dev
 RUN apt-get install -y r-cran-tkrplot
 RUN apt-get install -y libopenblas-base 
 RUN apt-get install -y r-cran-tseries
-#RUN apt-get install -y libpng-dev
-#RUN apt-get install -y zlib1g-dev
-RUN xvfb-run R --no-save -e "install.packages('lomb', repos = 'http://cran.R-project.org')"
-RUN xvfb-run R --no-save -e "install.packages('TSA', repos = 'http://cran.R-project.org')"
-#RUN xvfb-run R --no-save -e "install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')"
-#RUN xvfb-run R --no-save -e "install.packages('RHRV', repos = 'http://R-Forge.R-project.org')"
+RUN R --no-save -e "install.packages('lomb', repos = 'http://cran.R-project.org')"
+RUN R --no-save -e "install.packages('TSA', repos = 'http://cran.R-project.org')"
+#RUN R --no-save -e "install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')"
+#RUN R --no-save -e "install.packages('RHRV', repos = 'http://R-Forge.R-project.org')"
 
 # Python Dependencies
 
 RUN pip install numpy==1.10.4
 RUN pip install ipython==3.0.0
 RUN pip install pandas==0.16.0
-#
 RUN pip install amqp==1.4.6
 RUN pip install anyjson==0.3.3
 RUN pip install backports.ssl-match-hostname==3.4.0.2
@@ -86,7 +82,6 @@ RUN pip install billiard==3.3.0.19
 RUN pip install Bottleneck==1.0.0
 RUN pip install celery==3.1.17
 RUN pip install certifi==14.5.14
-#RUN pip install distribute==0.6.31
 RUN pip install dj-database-url==0.3.0
 RUN pip install dj-static==0.0.6
 RUN pip install Django==1.7.5
@@ -133,8 +128,5 @@ RUN pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
 
 # Setup database
 #
-RUN service postgresql start
 ADD setup-database.sh /docker-entrypoint-initdb.d/
 RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
-
-#ENTRYPOINT ["/usr/local/"]

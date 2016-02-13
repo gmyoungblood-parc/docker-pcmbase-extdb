@@ -35,7 +35,7 @@ pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
 #
 # install.packages("RHRV", repos="http://R-Forge.R-project.org")
 #
-#xvfb-run R --no-save -e "library.dynam('nonlinearTseries.so', 'nonlinearTseries', lib.loc = '/usr/local/lib/R/site-library/nonlinearTseries/libs/')" 
+#xvfb-run R --no-save -e "library.dynam('nonlinearTseries', 'nonlinearTseries', lib.loc = '/usr/local/lib/R/site-library/nonlinearTseries/libs/')" 
 
 sudo su - -c "R -e \"install.packages('lamb', repos = 'http://cran.R-project.org')\""
 sudo su - -c "R -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\""
