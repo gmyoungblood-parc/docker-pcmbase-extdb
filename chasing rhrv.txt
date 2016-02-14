@@ -61,6 +61,28 @@ g++ -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o nonlinearT
 
 
 #!/bin/sh
+apt-get -y update
+apt-get -y upgrade
+apt-get install -y gcc
+apt-get install -y git
+apt-get install -y python-pip
+apt-get install -y libxml2-dev libxslt-dev
+apt-get install -y python-dev
+apt-get install -y lib32z1-dev
+apt-get install -y libssl-dev
+apt-get install -y gunicorn
+apt-get install -y sendmail
+apt-get install -y vim
+apt-get install -y wget
+apt-get install -y python-numpy 
+apt-get install -y python-scipy
+apt-get install -y liblzma-dev
+
+# PostgreSQL 9.3 Database
+#
+apt-get install -y postgresql-9.3 postgresql-contrib-9.3 
+apt-get install -y libpq-dev
+
 # Packages in aptfile for tcl/tk
 #
 apt-get install -y mesa-common-dev
@@ -89,8 +111,6 @@ apt-get install -y r-base-dev
 apt-get install -y r-cran-tkrplot
 apt-get install -y libopenblas-base 
 apt-get install -y r-cran-tseries
-#RUN apt-get install -y libpng-dev
-#RUN apt-get install -y zlib1g-dev
 xvfb-run R --no-save -e "install.packages('lomb', repos = 'http://cran.R-project.org')"
 xvfb-run R --no-save -e "install.packages('TSA', repos = 'http://cran.R-project.org')"
 #RUN xvfb-run R --no-save -e "install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')"
