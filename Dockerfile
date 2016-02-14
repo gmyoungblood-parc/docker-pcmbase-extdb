@@ -18,7 +18,7 @@ RUN apt-get -y update && apt-get install -y gcc \
 	git \
 	gunicorn \
 	lib32z1-dev \
-	liblzma-dev
+	liblzma-dev \
 	libssl-dev \
 	libxml2-dev \
 	libxslt-dev \
@@ -71,7 +71,7 @@ RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('Rcpp', repos = 'ht
 RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')\""
 RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
 
-# Python Dependencies
+# Python Django Dependencies
 #
 RUN pip install numpy==1.10.4 \
 	ipython==3.0.0 \
