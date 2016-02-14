@@ -11,7 +11,6 @@ MAINTAINER Michael Youngblood <Michael.Youngblood@parc.com>
 
 ENV DATABASE_URL postgres://postgres:postgres1234@127.0.0.1:5432/pcm
 ENV PORT 8000
-ENV LOCAL_POSTGRES true
 
 EXPOSE 5432
 EXPOSE 8000
@@ -135,14 +134,13 @@ RUN pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
 RUN wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 RUN gem install foreman
 
-# Setup database
-#
-ADD setup-database.sh /docker-entrypoint-initdb.d/
-RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
+# Start postgres
+RUN service postgresql start
 
-# Setup entry
-#RUN mkdir -p /opt
-#ADD initd.sh /opt/
-#RUN chmod +x /opt/initd.sh
-#ENTRYPOINT ["/opt/initd.sh"]
+# Update passwd
+RUN echo -e "postgres1234\npostgres1234" | passwd postgres 
+RUN su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with password 'postgres1234';\""
+
+# Create database
+RUN su - postgres -c "createdb pcm"
 
