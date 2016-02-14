@@ -42,11 +42,6 @@ RUN apt-get install -y tk8.4-dev
 RUN apt-get install -y tk8.5-dev
 RUN apt-get install -y tk8.6-dev
 
-# Heroku Toolbelt
-#
-RUN wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-RUN gem install foreman
-
 # Virtual framebuffer for R
 #
 RUN apt-get install -y xvfb 
@@ -73,7 +68,7 @@ RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('RHRV', repos = 'ht
 
 
 # Python Dependencies
-
+#
 RUN pip install numpy==1.10.4
 RUN pip install ipython==3.0.0
 RUN pip install pandas==0.16.0
@@ -125,10 +120,17 @@ RUN pip install terminado==0.5
 RUN pip install tornado==4.1
 RUN pip install wsgiref==0.1.2
 RUN pip install psycopg2
-#
+
+# External Python Packages
 RUN pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
 
 # Setup database
 #
-ADD setup-database.sh /docker-entrypoint-initdb.d/
-RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
+#ADD setup-database.sh /docker-entrypoint-initdb.d/
+#RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
+
+# Heroku Toolbelt
+#
+RUN wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+RUN gem install foreman
+
