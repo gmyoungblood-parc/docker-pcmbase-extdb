@@ -138,7 +138,7 @@ RUN gem install foreman
 RUN service postgresql start
 
 # Update passwd
-RUN echo -e "postgres1234\npostgres1234" | passwd postgres 
+RUN /bin/bash -c 'echo -e "postgres1234\npostgres1234" | passwd postgres' 
 RUN su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with password 'postgres1234';\""
 
 # Create database
