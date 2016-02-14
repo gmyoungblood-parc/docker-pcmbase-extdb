@@ -141,8 +141,8 @@ ADD setup-database.sh /docker-entrypoint-initdb.d/
 RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
 
 # Setup entry
-RUN mkdir -p /opt
-ADD initd.sh /opt/
-RUN chmod +x /opt/initd.sh
-ENTRYPOINT ["/opt/initd.sh"]
+#RUN mkdir -p /opt
+#ADD initd.sh /opt/
+#RUN chmod +x /opt/initd.sh
+#ENTRYPOINT ["/opt/initd.sh"]
 
