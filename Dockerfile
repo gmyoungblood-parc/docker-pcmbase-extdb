@@ -66,7 +66,6 @@ RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('Rcpp', repos = 'ht
 RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')\""
 RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
 
-
 # Python Dependencies
 #
 RUN pip install numpy==1.10.4
