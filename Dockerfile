@@ -77,7 +77,7 @@ RUN pip install numpy==1.10.4 \
 	ipython==3.0.0 \
 	pandas==0.16.0 \
 	amqp==1.4.6 \
-	anyjson==0.3.3 
+	anyjson==0.3.3 \
 	backports.ssl-match-hostname==3.4.0.2 \
 	billiard==3.3.0.19 \
 	Bottleneck==1.0.0 \
