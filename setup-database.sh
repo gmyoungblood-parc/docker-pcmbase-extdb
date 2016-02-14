@@ -1,29 +1,17 @@
 #!/bin/bash
-# Original from macadmins
 
-#TEST=`gosu postgres postgres --single <<- EOSQL
-#   SELECT 1 FROM pg_database WHERE datname='$DB_NAME';
-#EOSQL`
+# Start postgres
+service postgresql start
 
-#echo "******CREATING DOCKER DATABASE******"
-#if [[ $TEST == "1" ]]; then
-    # database exists
-    # $? is 0
-#    exit 0
-#else
-#gosu postgres postgres --single <<- EOSQL
-#   CREATE ROLE $DB_USER WITH LOGIN ENCRYPTED PASSWORD '${DB_PASS}' CREATEDB;
-#EOSQL
+# Update passwd
+echo -e "postgres1234\npostgres1234" | passwd postgres 
+su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with password 'postgres1234';\""
 
-#gosu postgres postgres --single <<- EOSQL
-#   CREATE DATABASE $DB_NAME WITH OWNER $DB_USER TEMPLATE template0 ENCODING 'UTF8';
-#EOSQL
+# Create database
+su - postgres -c "createdb pcm"
 
-#gosu postgres postgres --single <<- EOSQL
-#   GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;
-#EOSQL
-#fi
-
-#echo ""
-#echo "******DOCKER DATABASE CREATED******"
+# Set database up or down based on LOCAL_POSTGRES environmental variable
+if [ $LOCAL_POSTGRES == "false" ]; then
+    service postgresql stop
+fi
 

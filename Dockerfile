@@ -1,6 +1,13 @@
 FROM ubuntu:14.04
 
 MAINTAINER Michael Youngblood <Michael.Youngblood@parc.com>
+#
+# TO DO:
+# 1. Eliminate unnecessary items
+# 2. Reduce layers
+# 3. Split this into 3 containers (server, notebook, database)
+# 4. Cache bust the update
+# 
 
 ENV DATABASE_URL postgres://postgres:postgres1234@127.0.0.1:5432/pcm
 ENV PORT 8000
@@ -123,13 +130,19 @@ RUN pip install psycopg2
 # External Python Packages
 RUN pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
 
-# Setup database
-#
-#ADD setup-database.sh /docker-entrypoint-initdb.d/
-#RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
-
 # Heroku Toolbelt
 #
 RUN wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 RUN gem install foreman
+
+# Setup database
+#
+ADD setup-database.sh /docker-entrypoint-initdb.d/
+RUN chmod 755 /docker-entrypoint-initdb.d/setup-database.sh
+
+# Setup entry
+RUN mkdir -p /opt
+ADD initd.sh /opt/
+RUN chmod +x /opt/initd.sh
+ENTRYPOINT ["/opt/initd.sh"]
 
