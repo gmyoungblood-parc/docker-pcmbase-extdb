@@ -25,7 +25,7 @@ EXPOSE 8000
 EXPOSE 8888-8890
 
 # Base Packages
-RUN apt-get -y update && apt-get install apt-get install -y gcc \
+RUN apt-get -y update && apt-get install --no-install-recommends -y gcc \
 	git \
 	gunicorn \
 	lib32z1-dev \
@@ -39,29 +39,29 @@ RUN apt-get -y update && apt-get install apt-get install -y gcc \
 	python-scipy \
 	sendmail \
 	vim \
-	wget 
+	wget ; apt-get autoremove ; sudo rm -rf /tmp/*
 
 # PostgreSQL 9.3 Database
 #
-RUN apt-get install apt-get install -y postgresql-9.3 \
+RUN apt-get install apt-get install --no-install-recommends -y postgresql-9.3 \
 	postgresql-contrib-9.3 \
-	libpq-dev 
+	libpq-dev ; apt-get autoremove ; sudo rm -rf /tmp/*
 
 # Packages in aptfile for tcl/tk
 #
-RUN apt-get install apt-get install -y mesa-common-dev \
+RUN apt-get install apt-get install --no-install-recommends -y mesa-common-dev \
 	libglu1-mesa-dev \
 	tk-dev \
 	tcl-dev \
 	tk8.4-dev \
 	tk8.5-dev \
-	tk8.6-dev 
+	tk8.6-dev ; apt-get autoremove ; sudo rm -rf /tmp/*
 
 # Virtual framebuffer for R
 #
-RUN apt-get install apt-get install -y xvfb \
+RUN apt-get install --no-install-recommends -y xvfb \
 	xauth \
-	xfonts-base 
+	xfonts-base ; apt-get autoremove ; sudo rm -rf /tmp/*
 
 # R system
 # From https://www.digitalocean.com/community/tutorials/how-to-set-up-r-on-ubuntu-14-04
@@ -70,11 +70,11 @@ RUN sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /
 	gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 ; \
 	gpg -a --export E084DAB9 | sudo apt-key add -
 
-RUN apt-get update && apt-get install -y r-base \
+RUN apt-get update && apt-get install --no-install-recommends -y r-base \
 	r-base-dev \
 	r-cran-tkrplot \
 	libopenblas-base \
-	r-cran-tseries 
+	r-cran-tseries ; apt-get autoremove ; sudo rm -rf /tmp/*
 	
 RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('lomb', repos = 'http://cran.R-project.org')\"" 
 RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\"" 
