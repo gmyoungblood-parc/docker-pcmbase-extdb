@@ -45,13 +45,13 @@ RUN apt-get -y update && apt-get install --no-install-recommends -y gcc \
 
 # PostgreSQL 9.3 Database
 #
-RUN apt-get install apt-get install --no-install-recommends -y postgresql-9.3 \
+RUN apt-get install --no-install-recommends -y postgresql-9.3 \
 	postgresql-contrib-9.3 \
 	libpq-dev ; apt-get autoremove ; sudo rm -rf /tmp/*
 
 # Packages in aptfile for tcl/tk
 #
-RUN apt-get install apt-get install --no-install-recommends -y mesa-common-dev \
+RUN apt-get install --no-install-recommends -y mesa-common-dev \
 	libglu1-mesa-dev \
 	tk-dev \
 	tcl-dev \
@@ -114,7 +114,7 @@ RUN pip install numpy==1.10.4 \
 	kombu==3.0.24 \
 	Markdown==2.6 \
 	MarkupSafe==0.23 \
-	matplotlib==1.4.3 \
+	matplotlib==1.5.1 \
 	mistune==0.5.1 \
 	mock==1.0.1 \
 	nose==1.3.4 \
