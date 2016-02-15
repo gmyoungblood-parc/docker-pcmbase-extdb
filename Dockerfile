@@ -76,11 +76,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y r-base \
 	libopenblas-base \
 	r-cran-tseries ; apt-get autoremove ; sudo rm -rf /tmp/*
 	
-RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('lomb', repos = 'http://cran.R-project.org')\"" ; \
-	sudo su - -c "xvfb-run R --no-save -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\"" ; \
-	sudo su - -c "xvfb-run R --no-save -e \"install.packages('Rcpp', repos = 'http://cran.R-project.org')\"" ; \
-	sudo su - -c "xvfb-run R --no-save -e \"install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')\"" ; \
-	sudo su - -c "xvfb-run R --no-save -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('lomb', repos = 'http://cran.R-project.org')\"" 
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('TSA', repos = 'http://cran.R-project.org')\"" 
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('Rcpp', repos = 'http://cran.R-project.org')\"" 
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('nonlinearTseries', repos = 'http://R-Forge.R-project.org')\"" 
+RUN sudo su - -c "xvfb-run R --no-save -e \"install.packages('RHRV', repos = 'http://R-Forge.R-project.org')\""
 
 # Python Django Dependencies
 #
