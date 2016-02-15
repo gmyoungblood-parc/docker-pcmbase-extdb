@@ -34,6 +34,7 @@ RUN apt-get -y update && apt-get install --no-install-recommends -y gcc \
 	libssl-dev \
 	libxml2-dev \
 	libxslt-dev \
+	pkg-config \
 	python-dev \
 	python-numpy \ 
 	python-pip \
