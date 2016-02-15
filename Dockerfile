@@ -29,6 +29,7 @@ RUN apt-get -y update && apt-get install --no-install-recommends -y gcc \
 	git \
 	gunicorn \
 	lib32z1-dev \
+	libfreetype6-dev \
 	liblzma-dev \
 	libssl-dev \
 	libxml2-dev \
