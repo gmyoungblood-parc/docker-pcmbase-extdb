@@ -124,8 +124,7 @@ RUN pip install anyjson==0.3.3 \
 	terminado==0.5 \
 	wsgiref==0.1.2 \
 	ptyprocess==0.4 \
-	Pygments==2.0.2 \
-	psycopg2==2.6.1
+	Pygments==2.0.2 
 	
 # Culled libraries, the ones above appear to be used, these do not
 #	 
@@ -139,6 +138,8 @@ RUN pip install anyjson==0.3.3 \
 #	Jinja2==2.7.3 \
 #	mock==1.0.1 \
 #	pyzmq==14.5.0 \
+#
+# psycopg2==2.6.1
 
 # External Python Packages
 RUN pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
