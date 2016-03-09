@@ -43,9 +43,10 @@ RUN apt-get -y update && apt-get install --no-install-recommends -y gcc \
 	wget ; apt-get autoremove ; sudo rm -rf /tmp/*
 #	sendmail \
 
-# MySQL 5.5 Database
+# Supports external PostgreSQL 9.3 or MySQL 5.5 Database
 #
 RUN apt-get install --no-install-recommends -y python-mysqldb \
+	postgresql-client-9.3 \
 	; apt-get autoremove ; sudo rm -rf /tmp/*
 
 # Packages in aptfile for tcl/tk
@@ -124,7 +125,8 @@ RUN pip install anyjson==0.3.3 \
 	terminado==0.5 \
 	wsgiref==0.1.2 \
 	ptyprocess==0.4 \
-	Pygments==2.0.2 
+	Pygments==2.0.2 \
+	psycopg2==2.6.1
 	
 # Culled libraries, the ones above appear to be used, these do not
 #	 
@@ -138,8 +140,6 @@ RUN pip install anyjson==0.3.3 \
 #	Jinja2==2.7.3 \
 #	mock==1.0.1 \
 #	pyzmq==14.5.0 \
-#
-# psycopg2==2.6.1
 
 # External Python Packages
 RUN pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
