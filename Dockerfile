@@ -47,7 +47,7 @@ RUN apt-get -y update && apt-get install --no-install-recommends -y gcc \
 #
 RUN apt-get install --no-install-recommends -y python-mysqldb \
 	postgresql-9.3 \
-	postgresql-contrib-9.3
+	postgresql-contrib-9.3 \
 	libpq-dev \
 	; apt-get autoremove ; sudo rm -rf /tmp/*
 
