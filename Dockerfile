@@ -46,7 +46,7 @@ RUN apt-get -y update && apt-get install --no-install-recommends -y gcc \
 # Supports external PostgreSQL 9.3 or MySQL 5.5 Database
 #
 RUN apt-get install --no-install-recommends -y python-mysqldb \
-	postgresql-client-9.3 \
+	postgresql-client-9.3 postgresql-contrib-9.3 \
 	; apt-get autoremove ; sudo rm -rf /tmp/*
 
 # Packages in aptfile for tcl/tk
